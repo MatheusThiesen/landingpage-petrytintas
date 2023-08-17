@@ -26,7 +26,7 @@ export default function Home() {
       <div className="">
         <img
           src="/fachada.jpg"
-          className="w-screen h-[60vh]  object-cover object-top "
+          className="max-sm:h-[40vh] w-screen h-[60vh]  object-cover object-top "
         />
       </div>
       <div className="flex justify-center w-full" id="SOBRE">
