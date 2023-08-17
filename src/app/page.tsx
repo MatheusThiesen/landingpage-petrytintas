@@ -2,12 +2,14 @@
 
 import AOS from "aos";
 import { useEffect } from "react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { FloatButtonWhatsApp } from "@/components/floatButtonWhatsapp";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { IoLocationSharp, IoTimeSharp } from "react-icons/io5";
+
+import { FloatButtonWhatsApp } from "@/components/FloatButtonWhatsApp";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 
 export default function Home() {
   useEffect(() => {
@@ -43,36 +45,48 @@ export default function Home() {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="flex justify-center w-full">
-        <div className="flex max-w-screen-xl w-full justify-between py-16">
-          <img
-            src="/interior.jpg"
-            className="h-80 object-cover shadow-2xl rounded-lg"
-            id="SOBRE"
-            data-aos="fade-right"
-          />
-          <img
-            src="/interior2.jpg"
-            className="h-96 object-cover shadow-2xl rounded-lg"
-            id="SOBRE"
-            data-aos="fade-right"
-          />
-          <div className="h-100 w-0.5 bg-zinc-400 mx-12" data-aos="fade-up" />
-          <div className="w-80" data-aos="fade-left">
-            <h2 className="text-zinc-900 text-2xl font-bold">
-              DESDE 1985, ATUANDO COM MARCAS LÍDERES DO MERCADO
-            </h2>
-            <p className="text-zinc-700 text-md">
-              Atuamos no segmento de Lojas de Tintas, desde 1985, atendendo ao
-              publico final e construtores. Ao longo dos anos,várias marcas
-              foram incorporadas ao nosso portfólio, em virtude do
-              reconhecimento ao trabalho desenvolvido.
-            </p>
+      <div className="flex justify-center w-full" id="SOBRE">
+        <div className="px-6 lg:px-0 lg:flex-row flex flex-col max-w-screen-xl w-full justify-between py-16">
+          <div className="mb-14 relative h-96 flex w-full">
+            <div className="max-sm:h-2/3 border-[16px] border-white top-0 left-0 z-10 h-80 object-cover rounded-lg absolute">
+              <img
+                src="/interior.jpg"
+                className="  h-full w-full object-cover rounded-lg"
+                id="Balcão"
+                data-aos="fade-right"
+              />
+            </div>
+
+            <img
+              src="/interior2.jpg"
+              className="h-2/3 bottom-0 right-0  object-cover rounded-lg  absolute"
+              id="Showroom"
+              data-aos="fade-right"
+            />
+          </div>
+
+          <div className=" w-0.5 bg-zinc-400 mx-12" data-aos="fade-up" />
+
+          <div className="w-full" data-aos="fade-left">
+            <div className="w-96 ">
+              <h2 className="text-zinc-900 text-2xl font-bold mb-4">
+                DESDE 1985, ATUANDO COM MARCAS LÍDERES DO MERCADO
+              </h2>
+              <p className="text-zinc-600 text-md">
+                Atuamos no segmento de Lojas de Tintas, desde 1985, atendendo ao
+                publico final e construtores. Ao longo dos anos,várias marcas
+                foram incorporadas ao nosso portfólio, em virtude do
+                reconhecimento ao trabalho desenvolvido.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="w-screen h-80  mb-20 bg-[url('/banner2.png')] bg-no-repeat bg-cover " />
+      <img
+        src="/banner2.png"
+        className="h-80 w-full object-cover object-top mb-20"
+      />
 
       <div className="w-full flex justify-center mb-20">
         <div className="max-w-screen-xl w-full flex flex-col items-center">
@@ -82,7 +96,7 @@ export default function Home() {
 
           <Swiper
             slidesPerView={3}
-            spaceBetween={50}
+            spaceBetween={10}
             loop={true}
             pagination={{
               dynamicBullets: true,
@@ -92,7 +106,7 @@ export default function Home() {
               disableOnInteraction: false,
             }}
             modules={[Navigation, Autoplay, Pagination]}
-            className="w-full h-60 text-zinc-900"
+            className="w-full h-52 text-zinc-900"
           >
             {[
               { uri: "/marcas/suvinil.png", name: "SUVINIL" },
@@ -106,7 +120,7 @@ export default function Home() {
                 <img
                   src={brand.uri}
                   alt={brand.name}
-                  className="h-52 object-cover rounded-md"
+                  className="h-full w-[25rem] object-contain rounded-md"
                 />
               </SwiperSlide>
             ))}
@@ -114,10 +128,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full flex justify-center mb-20">
+      <div className="w-full flex justify-center mb-10">
         <div className="max-w-screen-xl w-full">
           <h2
-            className="text-3xl font-bold mb-8"
+            className="text-3xl font-bold mb-8 px-6 lg:px-0"
             id="LOCALIZAÇÃO"
             data-aos="fade-right"
           >
@@ -130,9 +144,36 @@ export default function Home() {
             height="450"
             loading="lazy"
             className="rounded-lg"
-          ></iframe>
+          />
         </div>
       </div>
+
+      <div className="w-full flex justify-center mb-16">
+        <div className="max-w-screen-xl w-full lg:px-0  px-6 flex justify-between max-sm:flex-col max-sm:gap-12">
+          <div>
+            <div className="flex items-center">
+              <IoLocationSharp className="text-2xl mr-2" />
+              <h2 className="text-xl font-bold">LOCALIZAÇÃO</h2>
+            </div>
+            <p className="text-zinc-600 max-w-xs text-sm">
+              Av. Dorival Cândido Luz de Oliveira, 8018 - Bom Princípio,
+              Gravataí - RS, 94070-000
+            </p>
+          </div>
+
+          <div>
+            <div className="flex items-center">
+              <IoTimeSharp className="text-2xl mr-2" />
+              <h2 className="text-xl font-bold">HORÁRIOS DE ATENDIMENTO</h2>
+            </div>
+            <p className="text-zinc-600 max-w-xs text-sm">
+              De segunda à sexta, das 8h às 12h e das 13h30 às 18h e sabado das
+              8h às 12h.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <Footer />
 
       <FloatButtonWhatsApp />
