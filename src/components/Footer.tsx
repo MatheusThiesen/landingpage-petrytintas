@@ -10,7 +10,7 @@ export function Footer() {
             <p className="font-bold text-4xl text-white">FALE CONOSCO</p>
             <span className="text-white text-xl flex items-center">
               <MdWhatsapp color="white" className="text-3xl mr-2" /> (51)
-              3490-2950Z
+              3490-2950
             </span>
           </div>
 

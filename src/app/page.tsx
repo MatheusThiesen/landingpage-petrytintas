@@ -23,27 +23,11 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       <Header />
-      <div className="w-screen h-[60vh]">
-        <Swiper
-          direction={"vertical"}
-          loop={true}
-          autoplay={{
-            delay: 2800,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Navigation, Autoplay, Pagination]}
-          className="h-full w-full"
-        >
-          <SwiperSlide>
-            <img
-              src="/fachada.jpg"
-              className="h-full w-full object-cover object-top "
-            />
-          </SwiperSlide>
-        </Swiper>
+      <div className="">
+        <img
+          src="/fachada.jpg"
+          className="w-screen h-[60vh]  object-cover object-top "
+        />
       </div>
       <div className="flex justify-center w-full" id="SOBRE">
         <div className="px-6 lg:px-0 lg:flex-row flex flex-col max-w-screen-xl w-full justify-between py-16">
@@ -53,7 +37,7 @@ export default function Home() {
                 src="/interior.jpg"
                 className="  h-full w-full object-cover rounded-lg"
                 id="Balcão"
-                data-aos="fade-right"
+                data-aos="fade-left"
               />
             </div>
 
@@ -90,7 +74,7 @@ export default function Home() {
 
       <div className="w-full flex justify-center mb-20">
         <div className="max-w-screen-xl w-full flex flex-col items-center">
-          <h2 className="text-3xl mb-8" id="MARCA">
+          <h2 className="lg:px-0  px-6 text-3xl mb-8" id="MARCA">
             <b>As Melhores marcas</b> você encontra aqui
           </h2>
 
@@ -110,11 +94,13 @@ export default function Home() {
           >
             {[
               { uri: "/marcas/suvinil.png", name: "SUVINIL" },
-              { uri: "/marcas/jimo.png", name: "JIMO" },
               { uri: "/marcas/coral.png", name: "CORAL" },
-              { uri: "/marcas/suvinil.png", name: "SUVINIL" },
+              { uri: "/marcas/atlas.png", name: "ATLAS" },
+              { uri: "/marcas/ciacollor.png", name: "CIACOLLOR" },
+              { uri: "/marcas/montana.jpg", name: "MONTANA" },
               { uri: "/marcas/jimo.png", name: "JIMO" },
-              { uri: "/marcas/coral.png", name: "CORAL" },
+              { uri: "/marcas/sayerlack.png", name: "SAYERLACK" },
+              { uri: "/marcas/tigre.jpg", name: "TIGRE" },
             ].map((brand) => (
               <SwiperSlide key={brand.uri}>
                 <img
@@ -149,8 +135,8 @@ export default function Home() {
       </div>
 
       <div className="w-full flex justify-center mb-16">
-        <div className="max-w-screen-xl w-full lg:px-0  px-6 flex justify-between max-sm:flex-col max-sm:gap-12">
-          <div>
+        <div className="lg:px-0  px-6 max-w-screen-xl w-full  flex justify-between max-sm:flex-col max-sm:gap-12">
+          <div data-aos="fade-left">
             <div className="flex items-center">
               <IoLocationSharp className="text-2xl mr-2" />
               <h2 className="text-xl font-bold">LOCALIZAÇÃO</h2>
@@ -161,7 +147,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div>
+          <div data-aos="fade-right">
             <div className="flex items-center">
               <IoTimeSharp className="text-2xl mr-2" />
               <h2 className="text-xl font-bold">HORÁRIOS DE ATENDIMENTO</h2>

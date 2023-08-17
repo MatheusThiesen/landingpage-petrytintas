@@ -58,7 +58,7 @@ export default function Sidebar({ open, setOpen }: Props) {
                     </div>
                   </Transition.Child>
                   <div className="flex h-full flex-col overflow-y-scroll bg-zinc-800 py-6 shadow-xl">
-                    <div className="px-4 sm:px-6 border-b-2 pb-8">
+                    <div className="px-4 sm:px-6 pb-8">
                       <Dialog.Title className="flex justify-center items-center text-base font-semibold leading-6 text-gray-900">
                         <img src="/logo.png" alt="Logo" className="h-16" />
                       </Dialog.Title>
