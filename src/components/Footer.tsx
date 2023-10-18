@@ -31,7 +31,7 @@ export function Footer() {
 
           <div className="flex flex-col mb-6">
             <span className="font-bold text-lg text-white ">
-              SIGA NAS REDES SÓCIAS
+              SIGA NAS REDES SOCIAIS
             </span>
 
             <a

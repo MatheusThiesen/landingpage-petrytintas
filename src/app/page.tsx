@@ -25,7 +25,7 @@ export default function Home() {
       <Header />
       <div className="">
         <img
-          src="/fachada.jpg"
+          src="/fachada.webp"
           className="max-sm:h-[40vh] w-screen h-[60vh]  object-cover object-top "
         />
       </div>
@@ -34,7 +34,7 @@ export default function Home() {
           <div className="mb-14 relative h-96 flex w-full">
             <div className="max-sm:h-2/3 border-[16px] border-white top-0 left-0 z-10 h-80 object-cover rounded-lg absolute">
               <img
-                src="/interior.jpg"
+                src="/interior.webp"
                 className="  h-full w-full object-cover rounded-lg"
                 id="Balcão"
                 data-aos="fade-left"
@@ -42,7 +42,7 @@ export default function Home() {
             </div>
 
             <img
-              src="/interior2.jpg"
+              src="/interior2.webp"
               className="h-2/3 bottom-0 right-0  object-cover rounded-lg  absolute"
               id="Showroom"
               data-aos="fade-right"
@@ -58,9 +58,9 @@ export default function Home() {
               </h2>
               <p className="text-zinc-600 text-md">
                 Atuamos no segmento de Lojas de Tintas, desde 1985, atendendo ao
-                publico final e construtores. Ao longo dos anos,várias marcas
-                foram incorporadas ao nosso portfólio, em virtude do
-                reconhecimento ao trabalho desenvolvido.
+                consumidor e construtores. Ao longo dos anos,várias marcas foram
+                incorporadas ao nosso portfólio, em virtude do reconhecimento ao
+                trabalho desenvolvido.
               </p>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function Home() {
               <h2 className="text-xl font-bold">HORÁRIOS DE ATENDIMENTO</h2>
             </div>
             <p className="text-zinc-600 max-w-xs text-sm">
-              De segunda à sexta, das 8h às 12h e das 13h30 às 18h e sabado das
+              De segunda à sexta, das 8h às 12h e das 13h30 às 18h e sábado das
               8h às 12h.
             </p>
           </div>
