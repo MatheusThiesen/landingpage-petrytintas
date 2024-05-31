@@ -13,7 +13,7 @@ export default function Cards() {
         </p>
       </div>
 
-      <div className="w-full flex flex-col gap-y-4">
+      <div className="w-full flex flex-col gap-y-4 max-w-screen-sm">
         <a
           href="https://wa.me/555134902950?text=Ol%C3%A1%21+Cheguei+atrav%C3%A9s+do+site+petrytintas.com.br"
           target="_blank"
