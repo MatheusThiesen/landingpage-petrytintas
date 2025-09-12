@@ -23,6 +23,7 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       <Header />
+
       <div className="">
         <img
           src="/fachada.webp"

@@ -64,6 +64,20 @@ export default function Cards() {
           <span className="text-center">Site</span>
           <div></div>
         </a>
+        <a
+          href="https://www.petrytintas.com.br/trabalhe-conosco"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-cyan-500 flex p-4 rounded-2xl font-bold w-full justify-between  items-center"
+        >
+          <img
+            src="/contratado.png"
+            alt="site"
+            className="h-8 mr-2 object-contain"
+          />
+          <span className="text-center">Trabalhe conosco</span>
+          <div></div>
+        </a>
       </div>
     </div>
   );

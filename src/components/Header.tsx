@@ -23,7 +23,9 @@ export function Header() {
 
         <div className=" bg-zinc-500 h-24 py-4 px-4 flex justify-center">
           <div className="max-w-screen-xl w-full h-full flex justify-between items-center">
-            <img src="/logo.png" alt="Logo" className="h-5/6" />
+            <a className="h-full" href="/">
+              <img src="/logo.png" alt="Logo" className="h-5/6" />
+            </a>
 
             <button
               className="hidden max-sm:flex px-8"
@@ -33,14 +35,17 @@ export function Header() {
             </button>
 
             <nav className="max-sm:hidden flex  gap-x-8 px-4">
-              <a className="font-light text-white" href="#SOBRE">
+              <a className="font-light text-white" href="/#SOBRE">
                 SOBRE
               </a>
-              <a className="font-light text-white" href="#MARCA">
+              <a className="font-light text-white" href="/#MARCA">
                 MARCA
               </a>
-              <a className="font-light text-white" href="#LOCALIZAÇÃO">
+              <a className="font-light text-white" href="/#LOCALIZAÇÃO">
                 LOCALIZAÇÃO
+              </a>
+              <a className="font-light text-white" href="/trabalhe-conosco">
+                TRABALHE CONOSCO
               </a>
             </nav>
           </div>

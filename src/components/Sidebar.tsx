@@ -67,24 +67,31 @@ export default function Sidebar({ open, setOpen }: Props) {
                       <nav className=" flex-col flex  gap-x-8">
                         <a
                           className="font-light text-lg text-white"
-                          href="#SOBRE"
+                          href="/#SOBRE"
                           onClick={() => setOpen(false)}
                         >
                           SOBRE
                         </a>
                         <a
                           className="font-light text-lg text-white"
-                          href="#MARCA"
+                          href="/#MARCA"
                           onClick={() => setOpen(false)}
                         >
                           MARCA
                         </a>
                         <a
                           className="font-light text-lg text-white"
-                          href="#LOCALIZAÇÃO"
+                          href="/#LOCALIZAÇÃO"
                           onClick={() => setOpen(false)}
                         >
                           LOCALIZAÇÃO
+                        </a>
+                        <a
+                          className="font-light text-lg text-white"
+                          href="/trabalhe-conosco"
+                          onClick={() => setOpen(false)}
+                        >
+                          TRABALHE CONOSCO
                         </a>
                       </nav>
                     </div>
