@@ -24,12 +24,25 @@ export default function Home() {
     <div className="overflow-x-hidden">
       <Header />
 
-      <div className="">
-        <img
-          src="/fachada.webp"
-          className="max-sm:h-[40vh] w-screen h-[60vh]  object-cover object-top "
-        />
-      </div>
+      <Swiper
+        loop={true}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        modules={[Autoplay, Pagination]}
+        pagination={{ clickable: true }}
+        className="w-full h-[65vh] max-sm:h-[35vh]"
+      >
+        {[
+          { src: "/fachada.webp", label: "Matriz" },
+          { src: "/fachada-filial.webp", label: "Filial" },
+        ].map(({ src, label }) => (
+          <SwiperSlide key={src} className="relative">
+            <img src={src} className="w-full h-full object-cover object-top" />
+            <span className="absolute bottom-6 left-6 bg-black/50 text-white text-sm font-semibold px-4 py-1 rounded-full uppercase tracking-widest">
+              {label}
+            </span>
+          </SwiperSlide>
+        ))}
+      </Swiper>
       <div className="flex justify-center w-full" id="SOBRE">
         <div className="px-6 lg:px-0 lg:flex-row flex flex-col max-w-screen-xl w-full justify-between py-16">
           <div className="mb-14 relative h-96 flex w-full">
@@ -116,47 +129,60 @@ export default function Home() {
       </div>
 
       <div className="w-full flex justify-center mb-10">
-        <div className="max-w-screen-xl w-full">
+        <div className="max-w-screen-xl w-full px-6 lg:px-0">
           <h2
-            className="text-3xl font-bold mb-8 px-6 lg:px-0"
+            className="text-3xl font-bold mb-8"
             id="LOCALIZAÇÃO"
             data-aos="fade-right"
           >
             ONDE ESTAMOS
           </h2>
-          <iframe
-            data-aos="fade-left"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13830.593439276856!2d-51.075315!3d-29.932024!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951973eb31facfc7%3A0x91fa8faedfa799d2!2sPetry%20Tintas!5e0!3m2!1spt-BR!2sbr!4v1691456809959!5m2!1spt-BR!2sbr"
-            width="100%"
-            height="450"
-            loading="lazy"
-            className="rounded-lg"
-          />
-        </div>
-      </div>
-
-      <div className="w-full flex justify-center mb-16">
-        <div className="lg:px-0  px-6 max-w-screen-xl w-full  flex justify-between max-sm:flex-col max-sm:gap-12">
-          <div data-aos="fade-left">
-            <div className="flex items-center">
-              <IoLocationSharp className="text-2xl mr-2" />
-              <h2 className="text-xl font-bold">LOCALIZAÇÃO</h2>
+          <div className="flex max-sm:flex-col gap-6">
+            <div className="flex-1" data-aos="fade-right">
+              <p className="text-zinc-500 text-xs font-semibold uppercase mb-3 flex items-center gap-1">
+                <IoLocationSharp /> Matriz
+              </p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13830.593439276856!2d-51.075315!3d-29.932024!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951973eb31facfc7%3A0x91fa8faedfa799d2!2sPetry%20Tintas!5e0!3m2!1spt-BR!2sbr!4v1691456809959!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="380"
+                loading="lazy"
+                className="rounded-lg"
+              />
+              <p className="text-zinc-600 text-sm mt-3">
+                Av. Dorival Cândido Luz de Oliveira, 8018 - Bom Princípio,
+                Gravataí - RS, 94070-000
+              </p>
+              <div className="flex items-center gap-1 mt-3">
+                <IoTimeSharp className="text-zinc-500" />
+                <p className="text-zinc-600 text-sm">
+                  Seg–Sex: 8h às 12h e 13h30 às 18h &nbsp;|&nbsp; Sáb: 8h às 12h
+                </p>
+              </div>
             </div>
-            <p className="text-zinc-600 max-w-xs text-sm">
-              Av. Dorival Cândido Luz de Oliveira, 8018 - Bom Princípio,
-              Gravataí - RS, 94070-000
-            </p>
-          </div>
-
-          <div data-aos="fade-right">
-            <div className="flex items-center">
-              <IoTimeSharp className="text-2xl mr-2" />
-              <h2 className="text-xl font-bold">HORÁRIOS DE ATENDIMENTO</h2>
+            <div className="flex-1" data-aos="fade-left">
+              <p className="text-zinc-500 text-xs font-semibold uppercase mb-3 flex items-center gap-1">
+                <IoLocationSharp /> Filial
+              </p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.7775352923472!2d-50.9289611!3d-29.9283061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95190b0062e07f5b%3A0x4ca12e6f3b218ca5!2sPetry%20Tintas%2098%20Gravatai!5e0!3m2!1spt-BR!2sbr!4v1783947684486!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="380"
+                loading="lazy"
+                className="rounded-lg"
+              />
+              <p className="text-zinc-600 text-sm mt-3">
+                Av. Ely Corrêa, 5564 - Parque do Itatiaia, Gravataí - RS,
+                94197-012
+              </p>
+              <div className="flex items-center gap-1 mt-3">
+                <IoTimeSharp className="text-zinc-500" />
+                <p className="text-zinc-600 text-sm">
+                  Seg–Sex: 8h30 às 12h e 13h30 às 18h &nbsp;|&nbsp; Sáb: 8h30 às
+                  12h
+                </p>
+              </div>
             </div>
-            <p className="text-zinc-600 max-w-xs text-sm">
-              De segunda à sexta, das 8h às 12h e das 13h30 às 18h e sábado das
-              8h às 12h.
-            </p>
           </div>
         </div>
       </div>

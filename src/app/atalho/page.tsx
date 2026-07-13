@@ -1,84 +1,80 @@
-export default function Cards() {
+import { IoLogoInstagram } from "react-icons/io";
+import { IoChevronForward, IoLocationSharp } from "react-icons/io5";
+import { MdLanguage, MdWhatsapp, MdWork } from "react-icons/md";
+
+const links = [
+  {
+    href: "https://wa.me/555134902950?text=Ol%C3%A1%21+Cheguei+atrav%C3%A9s+do+site+petrytintas.com.br",
+    icon: <MdWhatsapp className="text-xl" />,
+    label: "WhatsApp",
+    iconColor: "text-green-500",
+  },
+  {
+    href: "https://maps.app.goo.gl/ZRYoMtNE6mWh4tsCA",
+    icon: <IoLocationSharp className="text-xl" />,
+    label: "Matriz — Av. Dorival C. L. de Oliveira, 8018",
+    iconColor: "text-zinc-500",
+  },
+  {
+    href: "https://maps.google.com/maps?q=Av.+Ely+Corrêa,+5564,+Parque+do+Itatiaia,+Gravataí,+RS",
+    icon: <IoLocationSharp className="text-xl" />,
+    label: "Filial — Av. Ely Corrêa, 5564",
+    iconColor: "text-zinc-500",
+  },
+  {
+    href: "https://www.instagram.com/petrytintas/",
+    icon: <IoLogoInstagram className="text-xl" />,
+    label: "Instagram",
+    iconColor: "text-pink-500",
+  },
+  {
+    href: "https://www.petrytintas.com.br/",
+    icon: <MdLanguage className="text-xl" />,
+    label: "Site",
+    iconColor: "text-blue-500",
+  },
+  {
+    href: "https://www.petrytintas.com.br/trabalhe-conosco",
+    icon: <MdWork className="text-xl" />,
+    label: "Trabalhe conosco",
+    iconColor: "text-zinc-500",
+  },
+];
+
+export default function Atalho() {
   return (
-    <div className="bg-zinc-600 flex-1 h-screen flex flex-col items-center p-16 text-white">
-      <img src="/logo.png" alt="Logo" className="h-10 mb-8" />
+    <div
+      className="min-h-screen flex flex-col items-center px-6 py-14 text-white"
+      style={{ backgroundColor: "#71717a" }}
+    >
+      <img src="/logo.png" alt="Petry Tintas" className="h-28 mb-6" />
 
-      <div className="mb-8">
-        <h1 className="font-bold text-center text-xl">
-          Bem-Vindo à PETRY TINTAS
+      <div className="mb-10 text-center">
+        <h1 className="font-bold text-lg tracking-wide text-white">
+          PETRY TINTAS
         </h1>
-
-        <p className="text-center text-md">
-          Loja de Tintas desde 1985, atuando com marcas líderes do mercado.
-        </p>
+        <p className="text-white/60 text-sm mt-1">Loja de Tintas desde 1985</p>
       </div>
 
-      <div className="w-full flex flex-col gap-y-4 max-w-screen-sm">
-        <a
-          href="https://wa.me/555134902950?text=Ol%C3%A1%21+Cheguei+atrav%C3%A9s+do+site+petrytintas.com.br"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-500 flex p-4 rounded-2xl font-bold w-full justify-between  items-center"
-        >
-          <img
-            src="/whatsapp.png"
-            alt="whatsapp"
-            className="h-8 mr-2 object-contain"
-          />
-          <span className="text-center">WhatsApp</span>
-          <div></div>
-        </a>
-
-        <a
-          href="https://maps.app.goo.gl/ZRYoMtNE6mWh4tsCA"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-yellow-500 flex p-4 rounded-2xl font-bold w-full justify-between  items-center"
-        >
-          <img src="/mapa.png" alt="mapa" className="h-8 mr-2 object-contain" />
-          <span className="text-center">Endereço</span>
-          <div></div>
-        </a>
-
-        <a
-          href="https://www.instagram.com/petrytintas/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-[#f44836] flex p-4 rounded-2xl font-bold w-full justify-between  items-center"
-        >
-          <img
-            src="/instagram.png"
-            alt="instagram"
-            className="h-8 mr-2 object-contain"
-          />
-          <span className="text-center">Instagram</span>
-          <div></div>
-        </a>
-        <a
-          href="https://www.petrytintas.com.br/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-blue-600 flex p-4 rounded-2xl font-bold w-full justify-between  items-center"
-        >
-          <img src="/site.png" alt="site" className="h-8 mr-2 object-contain" />
-          <span className="text-center">Site</span>
-          <div></div>
-        </a>
-        <a
-          href="https://www.petrytintas.com.br/trabalhe-conosco"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-cyan-500 flex p-4 rounded-2xl font-bold w-full justify-between  items-center"
-        >
-          <img
-            src="/contratado.png"
-            alt="site"
-            className="h-8 mr-2 object-contain"
-          />
-          <span className="text-center">Trabalhe conosco</span>
-          <div></div>
-        </a>
+      <div className="w-full flex flex-col gap-3 max-w-sm">
+        {links.map(({ href, icon, label, iconColor }) => (
+          <a
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between px-4 py-3.5 rounded-xl bg-white hover:bg-zinc-100 transition-colors duration-200"
+          >
+            <span className={`${iconColor} w-6`}>{icon}</span>
+            <span className="flex-1 text-center text-sm font-medium text-zinc-800">
+              {label}
+            </span>
+            <IoChevronForward className="text-zinc-400 text-sm" />
+          </a>
+        ))}
       </div>
+
+      <p className="text-white/30 text-xs mt-12">petrytintas.com.br</p>
     </div>
   );
 }
