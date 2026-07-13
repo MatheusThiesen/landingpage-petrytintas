@@ -21,10 +21,10 @@ export function Header() {
           <span className="font-bold text-sm">(51) 3490-2950</span>
         </div>
 
-        <div className=" bg-zinc-500 h-24 py-4 px-4 flex justify-center">
+        <div className=" bg-zinc-500 h-24 px-4 flex justify-center">
           <div className="max-w-screen-xl w-full h-full flex justify-between items-center">
             <a className="h-full" href="/">
-              <img src="/logo.png" alt="Logo" className="h-5/6" />
+              <img src="/logo.png" alt="Logo" className="h-24" />
             </a>
 
             <button
