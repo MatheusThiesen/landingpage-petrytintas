@@ -1,20 +1,89 @@
 "use client";
 
 import AOS from "aos";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { IoLocationSharp, IoTimeSharp } from "react-icons/io5";
-import { MdFormatPaint, MdSupportAgent, MdWhatsapp } from "react-icons/md";
+import { IoLocationSharp, IoNavigate, IoTimeSharp } from "react-icons/io5";
+import {
+  MdFormatPaint,
+  MdSupportAgent,
+  MdVolumeOff,
+  MdVolumeUp,
+  MdWhatsapp,
+} from "react-icons/md";
+import { SiWaze } from "react-icons/si";
 
 import { FloatButtonWhatsApp } from "@/components/FloatButtonWhatsApp";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 
+const DASH_COLORS = [
+  "bg-orange-600",
+  "bg-yellow-400",
+  "bg-green-400",
+  "bg-blue-400",
+  "bg-red-500",
+];
+
+function ColorDashes() {
+  return (
+    <div className="flex gap-1.5" aria-hidden="true">
+      {DASH_COLORS.map((color) => (
+        <span key={color} className={`${color} h-1 w-6 rounded-full`} />
+      ))}
+    </div>
+  );
+}
+
+const LOJAS = [
+  {
+    nome: "Matriz",
+    mapa: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3457.7775352923472!2d-51.075315!3d-29.932024!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951973eb31facfc7%3A0x91fa8faedfa799d2!2sPetry%20Tintas!5e1!3m2!1spt-BR!2sbr!4v1691456809959!5m2!1spt-BR!2sbr",
+    endereco:
+      "Av. Dorival Cândido Luz de Oliveira, 8018 - Bom Princípio, Gravataí - RS, 94070-000",
+    horario: "Seg–Sex: 8h às 12h e 13h30 às 18h · Sáb: 8h às 12h",
+    aos: "fade-right",
+  },
+  {
+    nome: "Filial",
+    mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.7775352923472!2d-50.9289611!3d-29.9283061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95190b0062e07f5b%3A0x4ca12e6f3b218ca5!2sPetry%20Tintas%2098%20Gravatai!5e1!3m2!1spt-BR!2sbr!4v1783947684486!5m2!1spt-BR!2sbr",
+    endereco:
+      "Av. Ely Corrêa, 5564 - Parque do Itatiaia, Gravataí - RS, 94197-012",
+    horario: "Seg–Sex: 8h30 às 12h e 13h30 às 18h · Sáb: 8h30 às 12h",
+    aos: "fade-left",
+  },
+];
+
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  function toggleMuted() {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setMuted(video.muted);
+  }
+
   useEffect(() => {
     AOS.init({ duration: 1000, offset: 0, once: true });
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -61,30 +130,61 @@ export default function Home() {
       {/* SOBRE */}
       <section className="flex justify-center w-full py-24 bg-white" id="SOBRE">
         <div className="px-6 lg:px-0 max-w-screen-xl w-full flex flex-col lg:flex-row gap-20 items-center">
-          <div className="relative h-96 w-full lg:w-1/2 flex-shrink-0">
-            <div
-              className="border-white border-[10px] shadow-2xl top-0 left-0 z-10 h-80 w-72 max-sm:w-full rounded-2xl absolute overflow-hidden"
-              data-aos="fade-right"
-            >
-              <img
-                src="/interior.webp"
-                className="h-full w-full object-cover"
+          <div
+            className="order-last lg:order-none w-full lg:w-auto lg:ml-10 flex-shrink-0 flex justify-center"
+            data-aos="fade-right"
+          >
+            <figure className="relative w-full max-w-[270px] sm:max-w-[320px]">
+              <div
+                aria-hidden="true"
+                className="absolute -left-4 -top-4 lg:-left-10 lg:-top-10 right-8 bottom-24 rounded-3xl bg-[#EFE9DF]"
               />
-            </div>
-            <div
-              className="border-white border-[10px] h-64 w-64 max-sm:w-48 max-sm:h-48 bottom-0 right-0 rounded-2xl absolute overflow-hidden shadow-2xl"
-              data-aos="fade-left"
-            >
-              <img
-                src="/interior2.webp"
-                className="h-full w-full object-cover"
-              />
-            </div>
+              <div className="relative shadow-2xl rounded-2xl overflow-hidden aspect-[9/16] bg-[#F6F3EE]">
+                <video
+                  ref={videoRef}
+                  src="/institucional.mp4"
+                  poster="/institucional-capa.jpg"
+                  className="h-full w-full object-cover"
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Vídeo institucional da Petry Tintas"
+                />
+                <button
+                  type="button"
+                  onClick={toggleMuted}
+                  aria-label={muted ? "Ativar som do vídeo" : "Desativar som do vídeo"}
+                  className="absolute bottom-4 right-4 h-11 w-11 rounded-full bg-white/90 text-zinc-900 shadow-lg flex items-center justify-center hover:bg-white transition-colors"
+                >
+                  {muted ? (
+                    <MdVolumeOff className="text-xl" />
+                  ) : (
+                    <MdVolumeUp className="text-xl" />
+                  )}
+                </button>
+              </div>
+              <figcaption className="relative mt-5">
+                <ColorDashes />
+                <p className="text-zinc-500 text-sm mt-3">
+                  Nossa história em 26 segundos ·{" "}
+                  <a
+                    href="https://www.instagram.com/petrytintas/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-zinc-800 hover:underline"
+                  >
+                    @petrytintas
+                  </a>
+                </p>
+              </figcaption>
+            </figure>
           </div>
 
           <div className="w-full" data-aos="fade-left">
+            <ColorDashes />
             <span
-              className="text-sm font-semibold uppercase tracking-widest"
+              className="block mt-4 text-sm font-semibold uppercase tracking-widest"
               style={{ color: "#71717a" }}
             >
               Sobre nós
@@ -210,57 +310,53 @@ export default function Home() {
             Onde Estamos
           </h2>
           <div className="flex max-sm:flex-col gap-8">
-            <div className="flex-1" data-aos="fade-right">
-              <p
-                className="text-xs font-semibold uppercase mb-4 flex items-center gap-1"
-                style={{ color: "#71717a" }}
-              >
-                <IoLocationSharp /> Matriz
-              </p>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13830.593439276856!2d-51.075315!3d-29.932024!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951973eb31facfc7%3A0x91fa8faedfa799d2!2sPetry%20Tintas!5e0!3m2!1spt-BR!2sbr!4v1691456809959!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="360"
-                loading="lazy"
-                className="rounded-2xl"
-              />
-              <p className="text-zinc-600 text-sm mt-4">
-                Av. Dorival Cândido Luz de Oliveira, 8018 - Bom Princípio,
-                Gravataí - RS, 94070-000
-              </p>
-              <div className="flex items-center gap-2 mt-2">
-                <IoTimeSharp style={{ color: "#71717a" }} />
-                <p className="text-zinc-400 text-sm">
-                  Seg–Sex: 8h às 12h e 13h30 às 18h · Sáb: 8h às 12h
+            {LOJAS.map((loja) => (
+              <div key={loja.nome} className="flex-1" data-aos={loja.aos}>
+                <p
+                  className="text-xs font-semibold uppercase mb-4 flex items-center gap-1"
+                  style={{ color: "#71717a" }}
+                >
+                  <IoLocationSharp /> {loja.nome}
                 </p>
+                <iframe
+                  src={loja.mapa}
+                  width="100%"
+                  height="360"
+                  loading="lazy"
+                  className="rounded-2xl"
+                  title={`Mapa da Petry Tintas ${loja.nome}`}
+                />
+                <p className="text-zinc-600 text-sm mt-4">{loja.endereco}</p>
+                <div className="flex items-center gap-2 mt-2">
+                  <IoTimeSharp style={{ color: "#71717a" }} />
+                  <p className="text-zinc-400 text-sm">{loja.horario}</p>
+                </div>
+                <div className="flex flex-wrap gap-3 mt-5">
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                      `Petry Tintas, ${loja.endereco}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-zinc-900 text-white font-semibold px-5 py-2.5 rounded-full hover:bg-zinc-700 transition-colors text-sm"
+                  >
+                    <IoNavigate />
+                    Como chegar
+                  </a>
+                  <a
+                    href={`https://waze.com/ul?q=${encodeURIComponent(
+                      loja.endereco
+                    )}&navigate=yes`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-zinc-300 text-zinc-800 font-semibold px-5 py-2.5 rounded-full hover:bg-zinc-50 transition-colors text-sm"
+                  >
+                    <SiWaze className="text-[#33CCFF]" />
+                    Waze
+                  </a>
+                </div>
               </div>
-            </div>
-
-            <div className="flex-1" data-aos="fade-left">
-              <p
-                className="text-xs font-semibold uppercase mb-4 flex items-center gap-1"
-                style={{ color: "#71717a" }}
-              >
-                <IoLocationSharp /> Filial
-              </p>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.7775352923472!2d-50.9289611!3d-29.9283061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95190b0062e07f5b%3A0x4ca12e6f3b218ca5!2sPetry%20Tintas%2098%20Gravatai!5e0!3m2!1spt-BR!2sbr!4v1783947684486!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="360"
-                loading="lazy"
-                className="rounded-2xl"
-              />
-              <p className="text-zinc-600 text-sm mt-4">
-                Av. Ely Corrêa, 5564 - Parque do Itatiaia, Gravataí - RS,
-                94197-012
-              </p>
-              <div className="flex items-center gap-2 mt-2">
-                <IoTimeSharp style={{ color: "#71717a" }} />
-                <p className="text-zinc-400 text-sm">
-                  Seg–Sex: 8h30 às 12h e 13h30 às 18h · Sáb: 8h30 às 12h
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

@@ -1,9 +1,11 @@
 import { IoLogoInstagram } from "react-icons/io";
 import { MdWhatsapp } from "react-icons/md";
 
+import { ThiesenLabsCredit } from "@/components/ThiesenLabsCredit";
+
 export function Footer() {
   return (
-    <footer className="w-full flex justify-center overflow-hidden ">
+    <footer className="w-full flex flex-col items-center overflow-hidden ">
       <div className="w-full bg-zinc-500 py-16 px-4 flex justify-center items-start">
         <div className="px-6 lg:px-0 lg:flex-row max-w-screen-xl w-full h-full flex flex-col justify-between items-start ">
           <div className="mb-6">
@@ -47,6 +49,10 @@ export function Footer() {
 
           <img src="/logo.png" alt="Whatsapp" className="h-24 mb-4" />
         </div>
+      </div>
+
+      <div className="w-full bg-[#24272B] py-4 px-4 flex justify-center">
+        <ThiesenLabsCredit />
       </div>
     </footer>
   );

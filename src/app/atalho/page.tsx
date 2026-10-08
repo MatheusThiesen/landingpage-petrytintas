@@ -2,6 +2,8 @@ import { IoLogoInstagram } from "react-icons/io";
 import { IoChevronForward, IoLocationSharp } from "react-icons/io5";
 import { MdLanguage, MdWhatsapp, MdWork } from "react-icons/md";
 
+import { ThiesenLabsCredit } from "@/components/ThiesenLabsCredit";
+
 const links = [
   {
     href: "https://wa.me/555134902950?text=Ol%C3%A1%21+Cheguei+atrav%C3%A9s+do+site+petrytintas.com.br",
@@ -75,6 +77,10 @@ export default function Atalho() {
       </div>
 
       <p className="text-white/30 text-xs mt-12">petrytintas.com.br</p>
+
+      <div className="mt-auto pt-10">
+        <ThiesenLabsCredit variant="negativo" />
+      </div>
     </div>
   );
 }
