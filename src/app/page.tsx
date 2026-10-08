@@ -1,7 +1,7 @@
 "use client";
 
 import AOS from "aos";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,8 +9,6 @@ import { IoLocationSharp, IoNavigate, IoTimeSharp } from "react-icons/io5";
 import {
   MdFormatPaint,
   MdSupportAgent,
-  MdVolumeOff,
-  MdVolumeUp,
   MdWhatsapp,
 } from "react-icons/md";
 import { SiWaze } from "react-icons/si";
@@ -58,14 +56,6 @@ const LOJAS = [
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
-
-  function toggleMuted() {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !video.muted;
-    setMuted(video.muted);
-  }
 
   useEffect(() => {
     AOS.init({ duration: 1000, offset: 0, once: true });
@@ -151,33 +141,10 @@ export default function Home() {
                   preload="metadata"
                   aria-label="Vídeo institucional da Petry Tintas"
                 />
-                <button
-                  type="button"
-                  onClick={toggleMuted}
-                  aria-label={muted ? "Ativar som do vídeo" : "Desativar som do vídeo"}
-                  className="absolute bottom-4 right-4 h-11 w-11 rounded-full bg-white/90 text-zinc-900 shadow-lg flex items-center justify-center hover:bg-white transition-colors"
-                >
-                  {muted ? (
-                    <MdVolumeOff className="text-xl" />
-                  ) : (
-                    <MdVolumeUp className="text-xl" />
-                  )}
-                </button>
               </div>
-              <figcaption className="relative mt-5">
+              <div className="relative mt-5">
                 <ColorDashes />
-                <p className="text-zinc-500 text-sm mt-3">
-                  Nossa história em 26 segundos ·{" "}
-                  <a
-                    href="https://www.instagram.com/petrytintas/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-zinc-800 hover:underline"
-                  >
-                    @petrytintas
-                  </a>
-                </p>
-              </figcaption>
+              </div>
             </figure>
           </div>
 
